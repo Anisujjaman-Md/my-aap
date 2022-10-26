@@ -34,8 +34,8 @@ function Home() {
   };
 
   useEffect(() => {
-    console.log("Hello World");
-  });
+    console.log("effect called");
+  }, []);
   
   return (
     <Fragment>
