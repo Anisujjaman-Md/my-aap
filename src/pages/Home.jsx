@@ -28,11 +28,15 @@ function Home() {
       id: 4,
     },
   ]);
+  const handleDelete = (id) =>{
+      const newBlog = blogs.filter(blog => blog.id !== id);
+      setBlogs(newBlog)
+  }
   return (
     <Fragment>
       <div className="home">
-        <BlogList blogs={blogs}  title= "All Blog's"/>
-        <BlogList blogs={blogs.filter((blog) => blog.author ==="anisujjaman" )} title="Anisujjaman's Blogs"/>
+        <BlogList blogs={blogs}  title= "All Blog's" handleDelete={handleDelete}/>
+        <BlogList blogs={blogs.filter((blog) => blog.author ==="anisujjaman" )} title="Anisujjaman's Blogs" handleDelete={handleDelete}/>
       </div>
     </Fragment>
   );
