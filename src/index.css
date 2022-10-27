@@ -26,7 +26,11 @@
     padding: 6px;
   }
   .navbar a:hover {
-    color: #ff0000;
+    color: #ffffff;
+    background-color: rgb(105, 90, 90);
+    border-radius: 5px;
+    border-bottom: 5px solid #ffc629;
+
   }
   .content {
     max-width: 600px;
@@ -42,4 +46,9 @@
   }
   .blog-preview h2{
     color:#9639e2;
+  }
+
+  .blog-preview a{
+ 
+    text-decoration: none;
   }

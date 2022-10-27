@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { getBlogs } from "../api/blog";
+import { getBlogs } from "../fetch/blogFetch";
 import BlogList from "./BlogList";
 
 function Home() {
   const [blogs, setBlogs] = useState(null);
-
+  
   const getData = async () => {
     let res = await getBlogs();
     if (res) setBlogs(res);
@@ -12,6 +12,7 @@ function Home() {
 
   useEffect(() => {
     getData();
+
   }, []);
 
   return (

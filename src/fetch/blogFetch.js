@@ -1,9 +1,9 @@
-const baseApiUrl = "http://localhost:8001"
+// const baseApiUrl = "http://localhost:8001"
 
 
 export const getBlogs = async () => {
   try {
-    let res = await fetch(`${baseApiUrl}/blogs`);
+    let res = await fetch("https://jsonplaceholder.typicode.com/posts");
     if(res.ok){
         let data = await res.json();
         return data;
