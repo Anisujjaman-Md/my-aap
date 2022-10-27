@@ -1,55 +1,29 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { getBlogs } from "../api/blog";
 import BlogList from "./BlogList";
 
 function Home() {
-  let [blogs, setBlogs] = useState([
-    {
-      title: "This is a blog 1",
-      body: "This is Body 1",
-      author: "anis",
-      id: 1,
-    },
-    {
-      title: "This is a blog 2",
-      body: "This is Body 2",
-      author: "anis",
-      id: 2,
-    },
-    {
-      title: "This is a blog 3",
-      body: "This is Body 3",
-      author: "anisujjaman",
-      id: 3,
-    },
-    {
-      title: "This is a blog 4",
-      body: "This is Body 4",
-      author: "anis",
-      id: 4,
-    },
-  ]);
-  const handleDelete = (id) => {
-    const newBlog = blogs.filter((blog) => blog.id !== id);
-    setBlogs(newBlog);
+  const [blogs, setBlogs] = useState(null);
+
+  const getData = async () => {
+    let res = await getBlogs();
+    if (res) setBlogs(res);
   };
 
   useEffect(() => {
-    console.log("effect called");
+    getData();
   }, []);
-  
+
   return (
     <Fragment>
       <div className="home">
-        <BlogList
-          blogs={blogs}
-          title="All Blog's"
-          handleDelete={handleDelete}
-        />
-        <BlogList
-          blogs={blogs.filter((blog) => blog.author === "anisujjaman")}
-          title="Anisujjaman's Blogs"
-          handleDelete={handleDelete}
-        />
+        <div>
+          {blogs ? (
+            <BlogList blogs={blogs} title="All Blog's" />
+          ) : (
+            <div>Loading .....</div>
+          )}
+        </div>
       </div>
     </Fragment>
   );
